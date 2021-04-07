@@ -28,14 +28,16 @@ function App() {
                   mode = "inline">
                   <Menu.Item key="1">
                     <Link to='/'/>
-                    <Icon type="dashboard" />
-                    COVID-19 Dashboard
-                  </Menu.Item>
-                  <Menu.Item key="2">
                     <Icon type="bar-chart" />
                     Vaccine Coverage
                   </Menu.Item>
-                  <Menu.Item key="link">
+                  <Menu.Item key="2">
+                  <a href="confirmed.html" target="_blank" rel="noopener noreferrer">
+                    <Icon type="dashboard" />
+                      COVID-19 Dashboard
+                  </a>
+                  </Menu.Item>
+                  <Menu.Item key="3">
                     <Link to='/detail'/>
                     <Icon type="database" />
                     Details
