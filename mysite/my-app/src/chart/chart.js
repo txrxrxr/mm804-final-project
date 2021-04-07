@@ -223,7 +223,7 @@ class ChartComponent extends React.Component {
             <Button type="primary" onClick={(e) => this.fetchResultData()} icon="search"> Search</Button>
           </span>
         </div>
-        <div style={{ 'marginTop': 20 }}>
+        <div style={{ 'marginTop': 35 }}>
           <ReactEcharts option={option} onChartReady={(e) => this.onChartReadyCallback(e)}/>
         </div>
       </div>
