@@ -8,10 +8,10 @@
         <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <nav class="navbar navbar-static-top navbar-default" role="navigation">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                    <span class="glyphicon glyphicon-fire"></span> Covid</a>
+                    <span class="glyphicon glyphicon-dashboard"></span> COVID-19</a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
@@ -47,8 +47,27 @@
                 max-width:100%;
             }
             .navbar-default{
+                background-color: #001529;
+                border-color: #E7E7E7;
                 max-width:100%;
             }
+            .navbar-default .navbar-brand,
+            .navbar-default .navbar-text,
+            .navbar-default .navbar-nav > li > a {
+                color: #ecf0f1;
+            }
+            .navbar-default .navbar-brand:hover,
+            .navbar-default .navbar-brand:focus,
+            .navbar-default .navbar-nav > li > a:hover,
+            .navbar-default .navbar-nav > li > a:focus {
+                color: rgb(218, 218, 218);
+            }
+            .navbar-default .navbar-nav > .active > a,
+            .navbar-default .navbar-nav > .active > a:hover,
+            .navbar-default .navbar-nav > .active > a:focus {
+                color: #ecf0f1;
+                background-color: #000b14;
+            } 
         </style>
     </head>
     <body style="height: 100%;width: 100%;overflow-x: hidden;overflow-y: hidden">

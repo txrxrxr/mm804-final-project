@@ -40,7 +40,7 @@ function App() {
                   <Menu.Item key="3">
                     <Link to='/detail'/>
                     <Icon type="database" />
-                    Details
+                    Source
                   </Menu.Item>
                 </Menu>
             </Sider>
@@ -59,7 +59,7 @@ function App() {
 
 function home() {
   return (
-    <div style={{ 'marginTop': '20vh' }}>
+    <div style={{ 'marginTop': '25vh' }}>
       <Row>
         <Col span={2}></Col>
         <Col span={20}>
