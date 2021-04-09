@@ -21,52 +21,58 @@
                     <li><a href="./vaccine.html" id="vaccine">Vaccination</a></li>
                 </ul>
             </div>
-            <div style="margin-right: 1%" >
+            <div style="" >
             <div class="navbar-form navbar-right">
-            <div class="col-md-7">
-                <div id="date2ID" class="input-group">
-                    <div class="input-group-addon">
+
+            <div class="col-md-6">
+                <div id="date2ID" class="input-group" style="background-color:#CC9966; border-radius: 25px;">
+                    <div class="input-group-addon" style="background-color:#CC9966; color:#FFFFFF;">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                     </div>
-                    <input id="dateID" class="form-control" value="Select Date" readonly>
-                    <div class="input-group-addon">
+                    <input id="dateID" class="form-control" value="Select Date" style="background-color:#CC9966; color:#FFFFFF;" readonly>
+                    <div class="input-group-addon" style="background-color:#CC9966; color:#FFFFFF;">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                     </div>
                 </div>
                 
             </div>
             <div class="col-md-2">
-                <button type="button" id="SearchBtn" class="btn btn-default"><span class="glyphicon glyphicon-cloud-download"></span>
+                <button type="button" id="SearchBtn" class="btn btn-default" style="background-color:#CC9966; color:#FFFFFF;border-radius: 25px;" data-toggle="tooltip" data-placement="bottom" title="Search map for the selected date"><span class="glyphicon"></span>
                 Search</button>
             </div>
+            
         </div>
         </div>
         </nav>
         <style>
-            body{
+           body{
                 max-width:100%;
             }
             .navbar-default{
-                background-color: #001529;
-                border-color: #E7E7E7;
+                background-color: #CD853F;
+                border-color: #CD853F;
                 max-width:100%;
+                
             }
             .navbar-default .navbar-brand,
             .navbar-default .navbar-text,
             .navbar-default .navbar-nav > li > a {
-                color: #ecf0f1;
+                color: #FFFFFF;
+                border-radius: 25px;
             }
             .navbar-default .navbar-brand:hover,
             .navbar-default .navbar-brand:focus,
             .navbar-default .navbar-nav > li > a:hover,
             .navbar-default .navbar-nav > li > a:focus {
-                color: rgb(218, 218, 218);
+                color: #FFFFFF;
+                background-color: #CC9966 
+
             }
             .navbar-default .navbar-nav > .active > a,
             .navbar-default .navbar-nav > .active > a:hover,
             .navbar-default .navbar-nav > .active > a:focus {
                 color: #ecf0f1;
-                background-color: #000b14;
+                background-color: #A0522D;
             } 
         </style>
     </head>
@@ -96,7 +102,7 @@
             .navbar { margin-bottom: 0}
         </style>
 
-        <div id="container" style="height: 100%;margin-bottom: 0;position: relative;z-index: 1"></div>
+        <div id="container" style="height: 90%;width: 95%; margin-bottom: 10;position: relative;z-index: 1"></div>
 
 
         <script type="text/javascript">
@@ -174,12 +180,22 @@ var DateStr = '4/2/21';
 
             option = {
                 visualMap: {
-                    show: false,
+                    // show: false,
+                    left: 'right',
                     min: 0,
                     max: max,
                     inRange: {
-                        color: ['#FFFFFF', '#FFFF99', ' #FFFF00', '#FFCC00', '#FF9900', '#FF6600', '#FF3300', '#FF0000', '#EA0000', '#CE0000', '#AE0000']
-                    }
+                        color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+                            },
+                    text: ['High', 'Low'],           // 文本，默认为数值文本
+                    calculable: true,
+                    orient: 'horizontal'
+                    // min: 0,
+                    // max: max,
+                    // inRange: {
+                    //     color: ['#FFFFFF', '#FFFF99', ' #FFFF00', '#FFCC00', '#FF9900', '#FF6600', '#FF3300', '#FF0000', '#EA0000', '#CE0000', '#AE0000']
+                    // }
+                    // text:['High', 'Low'],
                 },
                 tooltip: {
                     trigger: 'item',
@@ -265,12 +281,23 @@ searchBtn.onclick = function(){
                 }
     }
                 myChart.setOption({visualMap: {
-                    show: false,
+                    // show: false,
+                    left: 'right',
                     min: 0,
                     max: max,
                     inRange: {
-                        color: ['#FFFFFF', '#FFFF99', ' #FFFF00', '#FFCC00', '#FF9900', '#FF6600', '#FF3300', '#FF0000', '#EA0000', '#CE0000', '#AE0000']
-                    }},
+                        color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+                            },
+                    text: ['High', 'Low'],           // 文本，默认为数值文本
+                    calculable: true,
+                    orient: 'horizontal'
+                    // min: 0,
+                    // max: max,
+                    // inRange: {
+                    //     color: ['#FFFFFF', '#FFFF99', ' #FFFF00', '#FFCC00', '#FF9900', '#FF6600', '#FF3300', '#FF0000', '#EA0000', '#CE0000', '#AE0000']
+                    // }
+                    // text:['High', 'Low'],
+                },
                     series: [{
                     type: 'map',
                     map: 'world',

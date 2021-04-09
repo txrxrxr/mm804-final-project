@@ -5,43 +5,59 @@
         <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<!-- 二级 -->
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
         <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <nav class="navbar navbar-static-top navbar-default" role="navigation">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                    <span class=" glyphicon glyphicon-dashboard"></span> COVID-19</a>
+                    <span class="glyphicon glyphicon-dashboard"></span> COVID-19</a>
             </div>
+
             <div>
                 <ul class="nav navbar-nav">
-                    <li><a href="./confirmed.html" id="index">Confirmed Map</a></li>
-                    <li class="active"><a href="#" id="death">Death Map</a></li>
+                    <li class="active">
+                        <a href="./confirmed.html" id="confirmed">Confirmed Map</a>
+                    </li>
+                    <li><a href="./Death.html" id="death">Death Map</a></li>
                     <li><a href="./Recovered.html" id="recovered">Recovered Map</a></li>
                     <li><a href="./vaccine.html" id="vaccine">Vaccination</a></li>
                 </ul>
             </div>
-            <div style="" >
-            <div class="navbar-form navbar-right">
-            <div class="col-md-6">
-                <div id="date2ID" class="input-group" style="background-color:#CC9966; border-radius: 25px;">
-                    <div class="input-group-addon" style="background-color:#CC9966; color:#FFFFFF;">
+
+            
+            <div style="margin-right: 1%" >
+
+            <!-- <div class="navbar-form navbar-right">
+
+            <div class="col-md-5">
+                <div id="date2ID" class="input-group">
+                    <div class="input-group-addon">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                     </div>
-                    <input id="dateID" class="form-control" value="Select Date" style="background-color:#CC9966; color:#FFFFFF;" readonly>
-                    <div class="input-group-addon" style="background-color:#CC9966; color:#FFFFFF;">
+                    <input id="dateID" class="form-control" value="Select Date" readonly>
+                    <div class="input-group-addon">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                     </div>
                 </div>
                 
             </div>
             <div class="col-md-2">
-                <button type="button" id="SearchBtn" class="btn btn-default" style="background-color:#CC9966; color:#FFFFFF;border-radius: 25px;" data-toggle="tooltip" data-placement="bottom" title="Search map for the selected date"><span class="glyphicon"></span>
+                <button type="button" id="SearchBtn" class="btn btn-default"><span class="glyphicon"></span>
                 Search</button>
             </div>
+            <div class="col-md-2">
+                <button type="button" id="compareBtn" class="btn btn-default" onclick = "window.location.href = './confirmed_rate.html'" data-toggle="tooltip" data-placement="bottom" title="Show_Confirmed_Rate"><span class="glyphicon"></span>
+                Confirmed Rate</button>
+            </div>
+        </div> -->
         </div>
-        </div>
-        </nav>
+</nav>
         <style>
             body{
                 max-width:100%;
@@ -100,11 +116,14 @@
             .navbar { margin-bottom: 0}
         </style>
 
-        <div id="container" style="height: 90%;width: 95%; margin-bottom: 10;position: relative;z-index: 1"></div>
+       
+        
+        <div id="bar" style="width: 50%; height: 90%; float: right;top: 40; position: fixed;"></div>
+        <div id="container" style="height: 80%;width: 55%; margin-bottom: 10;position: relative;z-index: 1"></div>
 
 
         <script type="text/javascript">
-
+$(function () { $("[data-toggle='tooltip']").tooltip(); });
             $(function() {
                         $(".form-control").datetimepicker({
                             format : 'yyyy-mm-dd', // 展现格式
@@ -131,6 +150,7 @@ var DateStr = '4/2/21';
     confirmedArr=[];
     deathArr=[];
     recoveredArr=[];
+    populationArr=[];
     $.ajax({
                 type: "GET",
                 async: false,
@@ -160,6 +180,15 @@ var DateStr = '4/2/21';
                     deathArr = res;
                 }
             });
+        $.ajax({
+                type: "GET",
+                async: false,
+                url: "./population.json",
+                dataType: "json",
+                success: function(res) {
+                    populationArr = res;
+                }
+            });
 
 
             var dom = document.getElementById("container");
@@ -168,9 +197,9 @@ var DateStr = '4/2/21';
             var max = 0;
             for(var i = 0; i<confirmedArr.length;i++)
             {
-                regionData.push({"name":deathArr[i]["Country/Region"],"value":deathArr[i][DateStr]});
-                if(max<deathArr[i][DateStr]){
-                    max = deathArr[i][DateStr];
+                regionData.push({"name":confirmedArr[i]["Country/Region"],"value":confirmedArr[i][DateStr]});
+                if(max<confirmedArr[i][DateStr]){
+                    max = confirmedArr[i][DateStr];
                 }
             }
 
@@ -179,14 +208,23 @@ var DateStr = '4/2/21';
             option = {
                 visualMap: {
                     // show: false,
-                    left: 'right',
+                    left: 'center',
+                    top:'bottom',
                     min: 0,
                     max: max,
                     inRange: {
-                        color: ['#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+                        color: [ '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
                             },
                     text: ['High', 'Low'],           // 文本，默认为数值文本
-                    calculable: true
+                    calculable: true,
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    orient: 'horizontal'
+                    // min: 0,
+                    // max: max,
+                    // inRange: {
+                    //     color: ['#FFFFFF', '#FFFF99', ' #FFFF00', '#FFCC00', '#FF9900', '#FF6600', '#FF3300', '#FF0000', '#EA0000', '#CE0000', '#AE0000']
+                    // }
+                    // text:['High', 'Low'],
                 },
                 tooltip: {
                     trigger: 'item',
@@ -196,10 +234,19 @@ var DateStr = '4/2/21';
                         for(var i=0; i<confirmedArr.length; i++){
                             if(confirmedArr[i]['Country/Region']==params.data['name'])
                             {
-                                return info = params.data['name']+ "<br>" +"Confirmed: "+confirmedArr[i][DateStr]+"<br>"+"Death: "+deathArr[i][DateStr]+"<br> Recovered:"+recoveredArr[i][DateStr];
+                                info = params.data['name']+ "<br>" +"Confirmed: "+confirmedArr[i][DateStr]+"<br>"+"Death: "+deathArr[i][DateStr]+"<br> Recovered: "+recoveredArr[i][DateStr];
+                                for(var j=0; j<populationArr.length; j++)
+                                {
+                                    if(populationArr[j]["country"]==confirmedArr[i]['Country/Region'])
+                                    {
+                                        rate = confirmedArr[i][DateStr]/populationArr[j]["population"];
+                                        info = info + "<br> Infection rate: "+ rate;
+                                    }
+                                }
+                                return info;
                             }
                         }
-                        return '';
+                        return info = 'No data about'+ params.data['name'];
                         // return info;
                         // return params.data['name']+ " <br> " +"Value: "+ params.data['value'];
                     }
@@ -241,7 +288,101 @@ var DateStr = '4/2/21';
             if (option && typeof option === 'object') {
                 myChart.setOption(option);
             }
+var bar = document.getElementById("bar");
+var barChart = echarts.init(bar);
+var countryData = [];
+var totalData = [];
+var rateData = [];
+for(var i = 0; i<populationArr.length;i++)
+    {
+        for(var j = 0; j<confirmedArr.length;j++)
+        {
+            if(confirmedArr[j]["Country/Region"]==populationArr[i]["country"])
+            {
+                if(confirmedArr[j][DateStr]>1500000||confirmedArr[j][DateStr]/populationArr[i]["population"]>0.095)
+                {   
+                    var r = confirmedArr[j][DateStr]/populationArr[i]["population"]*100;
+                    // console.log(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-3);
+                    totalData.push(Number(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-3)));
+                    rateData.push(r);
+                    countryData.push(populationArr[i]["country"]);
+                }
+            }
+        }
+    }
+    console.log("changdu"+countryData.length);
+option2 = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['bar', 'pie']}
+            // ,
+            // restore: {show: true},
+            // saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data: ['Total Confirmed Population(thousand)', 'Infection Rate(%)']
+    },
+    legendHoverLink:true,
+    xAxis: [
+        {
+            type: 'category',
+            data: countryData,
+            axisPointer: {
+                type: 'shadow'
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: 'Confirmed',
+            min: 0,
+            max: 31324,
+            interval: 5000,
+            axisLabel: {
+                formatter: '{value}'
+            }
+        },
+        {
+            type: 'value',
+            name: 'Percentage',
+            min: 0.7,
+            max: 17,
+            interval: 3,
+            axisLabel: {
+                formatter: '{value} %'
+            }
+        }
+    ],
+    series: [
+        {
+            name: 'Total Confirmed Population(thousand)',
+            type: 'bar',
+            data: totalData,
+        },
+        {
+            name: 'Infection Rate(%)',
+            type: 'bar',
+            yAxisIndex: 1,
+            data: rateData
+        }
+    ]
+};
 
+if (option2 && typeof option2 === 'object') {
+                barChart.setOption(option2);
+            }
 
 var searchBtn = document.getElementById("SearchBtn");
 searchBtn.onclick = function(){
@@ -266,22 +407,18 @@ searchBtn.onclick = function(){
     var max = 0;
     for(var i = 0; i<confirmedArr.length;i++)
     {
-            regionData.push({"name":deathArr[i]["Country/Region"],"value":deathArr[i][DateStr]});
-                if(max<deathArr[i][DateStr]){
-                    max = deathArr[i][DateStr];
+            regionData.push({"name":confirmedArr[i]["Country/Region"],"value":confirmedArr[i][DateStr]});
+                if(max<confirmedArr[i][DateStr]){
+                    max = confirmedArr[i][DateStr];
                 }
     }
                 myChart.setOption({visualMap: {
-                    // show: false,
-                    left: 'right',
+                    show: false,
                     min: 0,
                     max: max,
                     inRange: {
-                        color: ['#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
-                            },
-                    text: ['High', 'Low'],           // 文本，默认为数值文本
-                    calculable: true
-                },
+                        color: ['#FFFFFF', '#FFFF99', ' #FFFF00', '#FFCC00', '#FF9900', '#FF6600', '#FF3300', '#FF0000', '#EA0000', '#CE0000', '#AE0000']
+                    }},
                     series: [{
                     type: 'map',
                     map: 'world',

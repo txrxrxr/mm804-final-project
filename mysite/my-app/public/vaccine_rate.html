@@ -21,15 +21,15 @@
                     <li class="active"><a href="" id="vaccine">Vaccination</a></li>
                 </ul>
             </div>
-            <div class="navbar-form navbar-right">
+            <!-- <div class="navbar-form navbar-right">
             <div class="col-md-2">
-                <button type="button" id="compareBtn" class="btn btn-default" onclick = "window.location.href = './vaccine_rate.html'" data-toggle="tooltip" style="background-color:#CC9966; color:#FFFFFF;border-radius: 25px;" data-placement="bottom" title="Show comparison between vaccinated rates in some regions"><span class="glyphicon"></span>
+                <button type="button" id="compareBtn" class="btn btn-default" onclick = "window.location.href = './confirmed_rate.html'" data-toggle="tooltip" data-placement="bottom" title="Vaccination rate"><span class="glyphicon"></span>
                 Vaccinated Rate</button>
             </div>
-        </div>
+        </div> -->
         </nav>
         <style>
-           body{
+             body{
                 max-width:100%;
             }
             .navbar-default{
@@ -85,8 +85,8 @@
         <style type="text/css">
             .navbar { margin-bottom: 0}
         </style>
-
-        <div id="container" style="height: 90%;width: 95%; margin-bottom: 10;position: relative;z-index: 1"></div>
+        <div id="bar" style="width: 50%; height: 90%; float: right;top: 40; position: fixed;"></div>
+        <div id="container" style="height: 80%;width: 55%; margin-bottom: 10;position: relative;z-index: 1"></div>
 
 
         <script type="text/javascript">
@@ -110,6 +110,7 @@
             //         });
 
 var vaccineArr = [];
+var populationArr=[];
 
     $.ajax({
                 type: "GET",
@@ -119,6 +120,15 @@ var vaccineArr = [];
                 success: function(res) {
                     vaccineArr = res;
         //console.log(confirmedArr);
+                }
+            });
+    $.ajax({
+                type: "GET",
+                async: false,
+                url: "./population.json",
+                dataType: "json",
+                success: function(res) {
+                    populationArr = res;
                 }
             });
     //console.log(confirmedArr);
@@ -221,6 +231,134 @@ var vaccineArr = [];
                 myChart.setOption(option);
             }
 
+
+var bar = document.getElementById("bar");
+var barChart = echarts.init(bar);
+var countryData = [];
+var totalData = [];
+var rateData = [];
+// for(var i = 0; i<populationArr.length;i++)
+//     {
+//         for(var j = 0; j<regionData.length;j++)
+//         {
+//             if(regionData[j]["name"]==populationArr[i]["country"])
+//             {
+//                 if(regionData[j]["value"]>8000000||regionData[j]["value"]/populationArr[i]["population"]>0.166)
+//                 {   
+//                     var r = regionData[j]["value"]/populationArr[i]["population"]*100;
+//                     // console.log(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-3);
+//                     totalData.push(regionData[j]["value"]);
+//                     rateData.push(r);
+//                     countryData.push(populationArr[i]["country"]);
+//                 }
+//             }
+//         }
+//     }
+var mainCountry=['China','Canada','United Kingdom','United States','Russia','India','Brazil','Germany','France']
+
+for(var i=0; i<vaccineArr.length; i++){
+    for(var j = 0 ; j < mainCountry.length-1;j++)
+    {
+        if(vaccineArr[i]['country']==mainCountry[j])
+        {
+            index = vaccineArr[i]['data'].length-1;
+    // keysArr = Object.keys(vaccineArr[i]['data'][len-1]);
+    // for(var j=0;j<keysArr.length;j++){
+
+    // }
+    if(vaccineArr[i]['data'][index]['total_vaccinations_per_hundred']&&vaccineArr[i]['data'][index]["total_vaccinations"])
+    {
+        
+        rateData.push(vaccineArr[i]['data'][index]['total_vaccinations_per_hundred']);
+        countryData.push(vaccineArr[i]["country"]);
+        totalData.push(Number(vaccineArr[i]['data'][index]["total_vaccinations"].toString().substring(0,vaccineArr[i]['data'][index]["total_vaccinations"].toString().length-6)));
+
+
+    }
+    
+
+        }
+    }
+    
+
+}
+countryData[6] = 'British';
+countryData[7] = 'America';
+    
+    console.log("changdu"+countryData.length);
+option2 = {
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: true},
+            // ,
+            saveAsImage: {show: true}
+        }
+    },
+    legend: {
+        data: ['Total Vaccinations', 'Total Vaccinations Per Hundred']
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data: countryData,
+            axisPointer: {
+                type: 'shadow'
+            },
+            axisLabel: {
+              interval:0,  //设置这里
+              margin: 10
+            }
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: 'Total Vaccinations',
+            min: 0,
+            max: 170,
+            interval: 30,
+            axisLabel: {
+                formatter: '{value} million'
+            }
+        },
+        {
+            type: 'value',
+            name: 'Percentage',
+            min: 0,
+            max: 60,
+            interval: 10,
+            axisLabel: {
+                formatter: '{value} %'
+            }
+        }
+    ],
+    series: [
+        {
+            name: 'Total Vaccinations',
+            type: 'bar',
+            data: totalData
+        },
+        {
+            name: 'Total Vaccinations Per Hundred',
+            type: 'bar',
+            yAxisIndex: 1,
+            data: rateData
+        }
+    ]
+};
+
+if (option2 && typeof option2 === 'object') {
+                barChart.setOption(option2);
+            }
         </script>
 
     </body>
