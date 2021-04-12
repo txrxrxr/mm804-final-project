@@ -2,27 +2,33 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
+    "@actions/github": "^4.0.0",
+    "@babel/preset-react": "^7.9.1",
     "antd": "^3.23.2",
     "bootstrap": "^4.6.0",
+    "csvtojson": "^2.0.10",
+    "d3": "^6.3.0",
+    "dayjs": "^1.9.6",
     "echarts": "^4.2.1",
     "echarts-for-react": "^2.0.15-beta.0",
+    "globe.gl": "^2.15.1",
     "react": "^16.9.0",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "request": "^2.88.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "eject": "react-scripts eject",
+    "action": "node ./scripts/action.js"
   },
   "browserslist": {
     "production": [
@@ -35,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
