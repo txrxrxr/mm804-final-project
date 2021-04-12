@@ -24,7 +24,7 @@
                     <li class="active">
                         <a href="./confirmed.html" id="confirmed">Confirmed</a>
                     </li>
-                    <li><a href="./Death.html" id="death">Deaths</a></li>
+                    <li><a href="./Death.html" id="death">Death</a></li>
                     <li><a href="./Recovered.html" id="recovered">Recovered</a></li>
                     <li><a href="./vaccine.html" id="vaccine">Vaccination</a></li>
                     
@@ -237,13 +237,14 @@ var DateStr = '4/2/21';
                         for(var i=0; i<confirmedArr.length; i++){
                             if(confirmedArr[i]['Country/Region']==params.data['name'])
                             {
-                                info = params.data['name']+ "<br>" +"Confirmed: "+confirmedArr[i][DateStr]+"<br>"+"Death: "+deathArr[i][DateStr]+"<br> Recovered: "+recoveredArr[i][DateStr];
+                                info = "Country: "+ params.data['name']+ "<br>" +"Confirmed: "+confirmedArr[i][DateStr]+"<br>"+"Death: "+deathArr[i][DateStr]+"<br> Recovered: "+recoveredArr[i][DateStr];
                                 for(var j=0; j<populationArr.length; j++)
                                 {
                                     if(populationArr[j]["country"]==confirmedArr[i]['Country/Region'])
                                     {
                                         rate = confirmedArr[i][DateStr]/populationArr[j]["population"];
-                                        info = info + "<br> Infection rate: "+ rate;
+                                        info = info + "<br> Infection rate: "+ rate.toString().substring(0,7);
+
                                     }
                                 }
                                 return info;
