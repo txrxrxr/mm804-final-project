@@ -21,7 +21,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!-- <link rel="stylesheet" href="/main.css" /> -->
+    <link rel="stylesheet" href="/main.css" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -39,13 +39,11 @@
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li><a href="/" id="3d">3D Globe</a></li>
+          <li class="active"><a href="/" id="3d">3D Globe</a></li>
           <li><a href="./confirmed.html" id="confirmed">Confirmed</a></li>
           <li><a href="./Death.html" id="death">Deaths</a></li>
           <li><a href="./Recovered.html" id="recovered_map">Recovered</a></li>
           <li><a href="./vaccine.html" id="vaccine">Vaccination</a></li>
-          <li><a href="/" id="cad_vaccination">Canda Vaccination</a></li>
-          <li><a href="/detail" id="detail">Details</a></li>
         </ul>
       </div>
     </nav>
@@ -57,6 +55,7 @@
           background-color: #CD853F;
           border-color: #CD853F;
           max-width:100%;
+          margin: 0;
       }
       .navbar-default .navbar-brand,
       .navbar-default .navbar-text,
@@ -83,7 +82,7 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!-- <div id="globeViz"></div>
+    <div id="globeViz"></div>
     <div class="top-info-container">
       <div class="title-desc">
         Loading countries affected by the virus...
@@ -118,6 +117,6 @@
       </div>
       </div>
     </div>
-    <script type="module" src="/_dist_/globe.js"></script> -->
+    <script type="module" src="/_dist_/globe.js"></script>
   </body>
 </html>
