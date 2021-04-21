@@ -119,17 +119,19 @@ $ npm start
 ```
 - Check the vaccine coverage from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month:
 ```
-![1]()
+![image](https://user-images.githubusercontent.com/31713264/115631887-ec32b280-a2c3-11eb-8b18-20404e76364d.png)
+
 
 ```
 - Compare the vaccine coverages between two provinces in a specific month:
 ```
-![1]() 
+![image](https://user-images.githubusercontent.com/31713264/115631925-fbb1fb80-a2c3-11eb-967d-cfb617ca8ede.png)
+
 
 ```
 - Display the detail of the dataset (http://localhost:3000/detail):
 ```
-![1]() 
+![image](https://user-images.githubusercontent.com/31713264/115631963-066c9080-a2c4-11eb-9370-ed4a4357ad11.png)
 
 
 ## Contributing
