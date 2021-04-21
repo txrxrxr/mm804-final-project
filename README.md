@@ -110,28 +110,26 @@ $ npm start
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115631384-f30cf580-a2c2-11eb-8dc7-8002213c0033.png)
 
-
 ```
 - Visualize the global vaccination status and vaccination rate during the COVID-19 pandemic.
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115631435-0b7d1000-a2c3-11eb-9b51-cf4bd8173929.png)
 
 ```
-- Check the vaccine coverage from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month:
+- Check the vaccine coverage from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month.
 ```
-![image](https://user-images.githubusercontent.com/31713264/115631887-ec32b280-a2c3-11eb-8b18-20404e76364d.png)
-
-
-```
-- Compare the vaccine coverages between two provinces in a specific month:
-```
-![image](https://user-images.githubusercontent.com/31713264/115631925-fbb1fb80-a2c3-11eb-967d-cfb617ca8ede.png)
-
+![image](https://user-images.githubusercontent.com/31713264/115632401-dd003480-a2c4-11eb-85d4-44f417becfdd.png)
 
 ```
-- Display the detail of the dataset:
+- Compare the vaccine coverages between two provinces in a specific month.
 ```
-![image](https://user-images.githubusercontent.com/31713264/115631963-066c9080-a2c4-11eb-9370-ed4a4357ad11.png)
+![image](https://user-images.githubusercontent.com/31713264/115632481-0e790000-a2c5-11eb-9ce3-97a8e8db3a05.png)
+
+```
+- Display the detail of the dataset.
+```
+![image](https://user-images.githubusercontent.com/31713264/115632533-2d779200-a2c5-11eb-9ced-95f4b9e38a1d.png)
+
 
 
 ## Contributing
@@ -143,7 +141,6 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
 
 
 <!-- LICENSE -->
