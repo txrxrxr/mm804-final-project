@@ -129,7 +129,7 @@ $ npm start
 
 
 ```
-- Display the detail of the dataset (http://localhost:3000/detail):
+- Display the detail of the dataset:
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115631963-066c9080-a2c4-11eb-9370-ed4a4357ad11.png)
 
