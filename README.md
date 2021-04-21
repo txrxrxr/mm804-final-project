@@ -93,27 +93,28 @@ $ npm start
 ```
 - View the latest data of the coronavirus cases on the 3D globe map. Time travel is also provided at the bottom to see the trend of coronavrius cases staring from January 2020. 
 ```
-![1]() 
+![image](https://user-images.githubusercontent.com/31713264/115631196-94e01280-a2c2-11eb-80d9-528448ab9c84.png)
 
 ```
 - Visualize the global confirmed cases and compare the infection rates.
 ```
-![1]() 
+![image](https://user-images.githubusercontent.com/31713264/115631272-bd680c80-a2c2-11eb-8aa8-1911ad22445c.png)
 
 ```
 - Visualize the global deaths during the COVID-19 pandemic.
 ```
-![1]() 
+![image](https://user-images.githubusercontent.com/31713264/115631345-dec8f880-a2c2-11eb-8bec-64954d7be3b7.png)
 
 ```
 - Visualize the global recovered cases during the COVID-19 pandemic.
 ```
-![1]() 
+![image](https://user-images.githubusercontent.com/31713264/115631384-f30cf580-a2c2-11eb-8dc7-8002213c0033.png)
+
 
 ```
 - Visualize the global vaccination status and vaccination rate during the COVID-19 pandemic.
 ```
-![1]() 
+![image](https://user-images.githubusercontent.com/31713264/115631435-0b7d1000-a2c3-11eb-9b51-cf4bd8173929.png)
 
 ```
 - Check the vaccine coverage from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month:
