@@ -41,25 +41,33 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## Data Visualization of COVID-19 Vaccination Coverage in Canada
-Data Visualization of COVID-19 Vaccination Coverage in Canada
+## Interactive 2D & 3D Visualization for COVID-19
+Interactive 2D & 3D Visualization for COVID-19
 
 This project focuses on the questions of interest:
+* How to effectively and clearly visualize the data in 2D and 3D to understand the current statistics and assess the risk?
+* Which metrics should be tracked to gain useful insights for data analytics? 
+* What is the current progress of COVID-19 vaccine in Canada? 
 * What is the number of populations that have received only one dose (per province and per month)? 
-* We built a data visualization project to visualize the COVID-19 vacci-nation coverage across each province in Canada. 
 * What is the comparison of vaccination coverage between two provinces (per month)?
-* We built a data visualization project to visualize the COVID-19 vacci-nation coverage across each province in Canada based on Django and React. 
+* We built a 2D and 3D visualiztion to represent COVID-19 statistics globally.
+* We built a data visualization project to visualize the COVID-19 vaccination coverage across each province in Canada.
 
-### Built With and Dataset 
-* [Django](https://www.djangoproject.com/)
+### Built with
 * [React](https://reactjs.org/)
-* [Dataset: National vaccination coverage](https://health-infobase.canada.ca/covid-19/vaccination-coverage/)
-* To be noticed, the dataset is commited in the source control, you will find the "db.sqlite3" file under the root folder after clone the repo
+* [ECharts](https://echarts.apache.org/en/index.html)
+* [D3.js](https://d3js.org/)
+* [Globe.GL](https://github.com/vasturiano/globe.gl)
+* [Django](https://www.djangoproject.com/)
+
+### Dataset 
+* [Coronavirus and Vaccination Data](https://github.com/bumbeishvili/covid19-daily-data)
+* [National vaccination coverage](https://health-infobase.canada.ca/covid-19/vaccination-coverage/)
 
 ### Prerequisites
 ```sh
-Clone the repo (the dataset "db.sqlite3" file can be found under the root folder after clone the repo)
-$ cd data_visualization/mysite
+Clone the repo
+$ cd mm804_final_project/mysite
 $ pip install virtualenv
 $ virtualenv venv
 $ .\venv\Scripts\activate
@@ -81,20 +89,47 @@ $ npm start
 ```
 
 ### Interact with the data visualization system in your browser
-```
-- Check the vaccine coverage from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month:
-```
-![1](https://github.com/txrxrxr/data_visualization/blob/master/mysite/my-app/public/pic1.png) 
 
 ```
-- Compare the vaccine coverages between two provinces in a specific month:
+- View the latest data of the coronavirus cases on the 3D globe map. Time travel is also provided at the bottom to see the trend of coronavrius cases staring from January 2020. 
 ```
-![1](https://github.com/txrxrxr/data_visualization/blob/master/mysite/my-app/public/pic2.png) 
+![image](https://user-images.githubusercontent.com/31713264/115631196-94e01280-a2c2-11eb-80d9-528448ab9c84.png)
 
 ```
-- Display the detail of the dataset (http://localhost:3000/detail):
+- Visualize the global confirmed cases and compare the infection rates.
 ```
-![1](https://github.com/txrxrxr/data_visualization/blob/master/mysite/my-app/public/pic3.png) 
+![image](https://user-images.githubusercontent.com/31713264/115631272-bd680c80-a2c2-11eb-8aa8-1911ad22445c.png)
+
+```
+- Visualize the global deaths during the COVID-19 pandemic.
+```
+![image](https://user-images.githubusercontent.com/31713264/115631345-dec8f880-a2c2-11eb-8bec-64954d7be3b7.png)
+
+```
+- Visualize the global recovered cases during the COVID-19 pandemic.
+```
+![image](https://user-images.githubusercontent.com/31713264/115631384-f30cf580-a2c2-11eb-8dc7-8002213c0033.png)
+
+```
+- Visualize the global vaccination status and vaccination rate during the COVID-19 pandemic.
+```
+![image](https://user-images.githubusercontent.com/31713264/115631435-0b7d1000-a2c3-11eb-9b51-cf4bd8173929.png)
+
+```
+- Check the vaccine coverage from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month.
+```
+![image](https://user-images.githubusercontent.com/31713264/115632401-dd003480-a2c4-11eb-85d4-44f417becfdd.png)
+
+```
+- Compare the vaccine coverages between two provinces in a specific month.
+```
+![image](https://user-images.githubusercontent.com/31713264/115632481-0e790000-a2c5-11eb-9ce3-97a8e8db3a05.png)
+
+```
+- Display the detail of the dataset.
+```
+![image](https://user-images.githubusercontent.com/31713264/115632533-2d779200-a2c5-11eb-9ced-95f4b9e38a1d.png)
+
 
 
 ## Contributing
@@ -108,7 +143,6 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
 <!-- LICENSE -->
 ## License
 
@@ -119,5 +153,5 @@ Django: https://www.djangoproject.com/
 
 React: https://reactjs.org/
 
-Dataset: National vaccination coverage: https://health-infobase.canada.ca/covid-19/vaccination-coverage/
+Covid-3D: https://github.com/wobsoriano/covid3d
 
