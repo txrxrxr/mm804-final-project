@@ -21,10 +21,11 @@
 
             <div>
                 <ul class="nav navbar-nav">
+                    <li><a href="/" id="3d">3D Globe</a></li>
                     <li class="active">
                         <a href="./confirmed.html" id="confirmed">Confirmed</a>
                     </li>
-                    <li><a href="./Death.html" id="death">Deaths</a></li>
+                    <li><a href="./Death.html" id="death">Death</a></li>
                     <li><a href="./Recovered.html" id="recovered">Recovered</a></li>
                     <li><a href="./vaccine.html" id="vaccine">Vaccination</a></li>
                 </ul>
@@ -195,13 +196,38 @@ var DateStr = '4/2/21';
             var myChart = echarts.init(dom);
             var regionData=[];
             var max = 0;
-            for(var i = 0; i<confirmedArr.length;i++)
+
+            var bar = document.getElementById("bar");
+            var barChart = echarts.init(bar);
+            var countryData = [];
+            var totalData = [];
+            var rateData = [];
+            var mainCountry=['Canada','United Kingdom','United States','Slovenia','Argentina','Andonrra','India','Brazil','Montenegro','France'];
+for(var i = 0; i<populationArr.length;i++)
+{
+    for(var j = 0; j<confirmedArr.length;j++)
+    {
+        if(confirmedArr[j]["Country/Region"]==populationArr[i]["country"])
+        {
+            var r = confirmedArr[j][DateStr]/populationArr[i]["population"]*100;
+            for(var z = 0; z<mainCountry.length;z++)
             {
-                regionData.push({"name":confirmedArr[i]["Country/Region"],"value":confirmedArr[i][DateStr]});
-                if(max<confirmedArr[i][DateStr]){
-                    max = confirmedArr[i][DateStr];
+                if(populationArr[i]['country']==mainCountry[z])
+                {
+                    totalData.push(Number(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-4))/100.00);
+                    rateData.push(r);
+                    countryData.push(populationArr[i]["country"]);
                 }
             }
+            regionData.push({"name":populationArr[i]["country"],"value":r});
+            if(max<r){
+                max = r;
+                    }
+        }
+    }
+    
+}
+
 
             
 
@@ -215,7 +241,7 @@ var DateStr = '4/2/21';
                     inRange: {
                         color: [ '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
                             },
-                    text: ['High', 'Low'],           // 文本，默认为数值文本
+                    text: ['High confimred rate(%)', 'Low confirmed rate(%)'],           // 文本，默认为数值文本
                     calculable: true,
                     backgroundColor: 'rgba(0,0,0,0)',
                     orient: 'horizontal'
@@ -288,29 +314,10 @@ var DateStr = '4/2/21';
             if (option && typeof option === 'object') {
                 myChart.setOption(option);
             }
-var bar = document.getElementById("bar");
-var barChart = echarts.init(bar);
-var countryData = [];
-var totalData = [];
-var rateData = [];
-for(var i = 0; i<populationArr.length;i++)
-    {
-        for(var j = 0; j<confirmedArr.length;j++)
-        {
-            if(confirmedArr[j]["Country/Region"]==populationArr[i]["country"])
-            {
-                if(confirmedArr[j][DateStr]>1500000||confirmedArr[j][DateStr]/populationArr[i]["population"]>0.095)
-                {   
-                    var r = confirmedArr[j][DateStr]/populationArr[i]["population"]*100;
-                    // console.log(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-3);
-                    totalData.push(Number(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-3)));
-                    rateData.push(r);
-                    countryData.push(populationArr[i]["country"]);
-                }
-            }
-        }
-    }
-    console.log("changdu"+countryData.length);
+
+countryData[7] = 'British';
+countryData[8] = 'America';
+
 option2 = {
     tooltip: {
         trigger: 'axis',
@@ -331,7 +338,7 @@ option2 = {
         }
     },
     legend: {
-        data: ['Total Confirmed Population(thousand)', 'Infection Rate(%)']
+        data: ['Total Confirmed Population(million)', 'Infection Rate(%)']
     },
     legendHoverLink:true,
     xAxis: [
@@ -340,24 +347,28 @@ option2 = {
             data: countryData,
             axisPointer: {
                 type: 'shadow'
+            },
+            axisLabel: {
+              interval:0,  
+              margin: 10
             }
         }
     ],
     yAxis: [
         {
             type: 'value',
-            name: 'Confirmed',
+            name: 'Total Confirmed',
             min: 0,
-            max: 31324,
-            interval: 5000,
+            max: 32,
+            interval: 5,
             axisLabel: {
-                formatter: '{value}'
+                formatter: '{value} million'
             }
         },
         {
             type: 'value',
-            name: 'Percentage',
-            min: 0.7,
+            name: 'Confirmed Rate',
+            min: 0,
             max: 17,
             interval: 3,
             axisLabel: {
@@ -367,7 +378,7 @@ option2 = {
     ],
     series: [
         {
-            name: 'Total Confirmed Population(thousand)',
+            name: 'Total Confirmed Population(million)',
             type: 'bar',
             data: totalData,
         },

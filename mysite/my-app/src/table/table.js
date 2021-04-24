@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './table.css';
-import { Table, Divider, Tag, Button , Spin} from 'antd';
+import { Table, Spin } from 'antd';
 
 
 class TableComponent extends React.Component {

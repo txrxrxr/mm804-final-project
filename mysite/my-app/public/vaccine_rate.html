@@ -15,12 +15,11 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
+                    <li><a href="/" id="3d">3D Globe</a></li>
                     <li><a href="./confirmed.html" id="confirmed">Confirmed</a></li>
-                    <li><a href="./Death.html" id="death">Deaths</a></li>
+                    <li><a href="./Death.html" id="death">Death</a></li>
                     <li><a href="./Recovered.html" id="recovered">Recovered</a></li>
-                    <li class="active"><a href="" id="vaccine">Vaccination</a></li>
-                    <li><a href="./" id="vaccine_comp">Canada Vaccination</a></li>
-                    <li><a href="./detail" id="detail">Detatils</a></li>
+                    <li class="active"><a href="./vaccine.html" id="vaccine">Vaccination</a></li>
                 </ul>
             </div>
             <!-- <div class="navbar-form navbar-right">
@@ -137,31 +136,80 @@ var populationArr=[];
 
 
             var dom = document.getElementById("container");
-            var myChart = echarts.init(dom);
+            var myChart = echarts.init(dom,'light');
             var regionData=[];
             var max = 0;
-            for(var i = 0; i<vaccineArr.length;i++)
+            // for(var i = 0; i<vaccineArr.length;i++)
+            // {
+            //     len = vaccineArr[i]['data'].length;
+            //     regionData.push({"name":vaccineArr[i]["country"],"value":vaccineArr[i]['data'][len-1]['total_vaccinations']});
+            //     // if(max<vaccineArr[i]['data'][len-1]['total_vaccinations']&&vaccineArr[i]['country']!='World'){
+            //     //     max = vaccineArr[i]['data'][len-1]['total_vaccinations'];
+            //     // }
+            
+
+            //console.log(max);
+
+            
+
+
+var bar = document.getElementById("bar");
+var barChart = echarts.init(bar);
+var countryData = [];
+var totalData = [];
+var rateData = [];
+// for(var i = 0; i<populationArr.length;i++)
+//     {
+//         for(var j = 0; j<regionData.length;j++)
+//         {
+//             if(regionData[j]["name"]==populationArr[i]["country"])
+//             {
+//                 if(regionData[j]["value"]>8000000||regionData[j]["value"]/populationArr[i]["population"]>0.166)
+//                 {   
+//                     var r = regionData[j]["value"]/populationArr[i]["population"]*100;
+//                     // console.log(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-3);
+//                     totalData.push(regionData[j]["value"]);
+//                     rateData.push(r);
+//                     countryData.push(populationArr[i]["country"]);
+//                 }
+//             }
+//         }
+//     }
+var mainCountry=['Canada','United Kingdom','United States','Russia','Mexico','China','India','Brazil','Germany','France'];
+
+for(var i=0; i<vaccineArr.length; i++){
+    index = vaccineArr[i]['data'].length-1;
+
+    if(vaccineArr[i]['data'][index]['total_vaccinations_per_hundred']&&vaccineArr[i]['data'][index]["total_vaccinations"])
+    {
+        for(var j = 0 ; j < mainCountry.length-1;j++)
+        {
+            if(vaccineArr[i]['country']==mainCountry[j])
             {
-                len = vaccineArr[i]['data'].length;
-                regionData.push({"name":vaccineArr[i]["country"],"value":vaccineArr[i]['data'][len-1]['total_vaccinations']});
-                // if(max<vaccineArr[i]['data'][len-1]['total_vaccinations']&&vaccineArr[i]['country']!='World'){
-                //     max = vaccineArr[i]['data'][len-1]['total_vaccinations'];
-                // }
+                rateData.push(vaccineArr[i]['data'][index]['total_vaccinations_per_hundred']);
+                countryData.push(vaccineArr[i]["country"]);
+                totalData.push(Number(vaccineArr[i]['data'][index]["total_vaccinations"].toString().substring(0,vaccineArr[i]['data'][index]["total_vaccinations"].toString().length-6)));
             }
+        }
+        regionData.push({"name":vaccineArr[i]["country"],"value":vaccineArr[i]['data'][index]['total_vaccinations_per_hundred']});
+    }
+    
 
-            console.log(max);
+}
+countryData[7] = 'British';
+countryData[8] = 'America';
 
-            option = {
+option = {
                 visualMap: {
                     // show: false,
                     left: 'right',
                     min: 0,
-                    max: 165053746,
+                    max: 55,
                     inRange: {
                         color: 
                         ['#ffffbf', '#e0f3f8', '#abd9e9', '#74add1', '#4575b4', '#313695']
                             },
-                    text: ['High total vaccinations', 'Low total vaccinations'],           // 文本，默认为数值文本
+                    text: ['High vaccinated rate', 'Low total vaccinated rate'],           // 文本，默认为数值文本
                     calculable: true,
                     orient: 'horizontal',
                     left: 'center',
@@ -232,60 +280,6 @@ var populationArr=[];
             if (option && typeof option === 'object') {
                 myChart.setOption(option);
             }
-
-
-var bar = document.getElementById("bar");
-var barChart = echarts.init(bar);
-var countryData = [];
-var totalData = [];
-var rateData = [];
-// for(var i = 0; i<populationArr.length;i++)
-//     {
-//         for(var j = 0; j<regionData.length;j++)
-//         {
-//             if(regionData[j]["name"]==populationArr[i]["country"])
-//             {
-//                 if(regionData[j]["value"]>8000000||regionData[j]["value"]/populationArr[i]["population"]>0.166)
-//                 {   
-//                     var r = regionData[j]["value"]/populationArr[i]["population"]*100;
-//                     // console.log(confirmedArr[j][DateStr].toString().substring(0,confirmedArr[j][DateStr].toString().length-3);
-//                     totalData.push(regionData[j]["value"]);
-//                     rateData.push(r);
-//                     countryData.push(populationArr[i]["country"]);
-//                 }
-//             }
-//         }
-//     }
-var mainCountry=['China','Canada','United Kingdom','United States','Russia','India','Brazil','Germany','France']
-
-for(var i=0; i<vaccineArr.length; i++){
-    for(var j = 0 ; j < mainCountry.length-1;j++)
-    {
-        if(vaccineArr[i]['country']==mainCountry[j])
-        {
-            index = vaccineArr[i]['data'].length-1;
-    // keysArr = Object.keys(vaccineArr[i]['data'][len-1]);
-    // for(var j=0;j<keysArr.length;j++){
-
-    // }
-    if(vaccineArr[i]['data'][index]['total_vaccinations_per_hundred']&&vaccineArr[i]['data'][index]["total_vaccinations"])
-    {
-        
-        rateData.push(vaccineArr[i]['data'][index]['total_vaccinations_per_hundred']);
-        countryData.push(vaccineArr[i]["country"]);
-        totalData.push(Number(vaccineArr[i]['data'][index]["total_vaccinations"].toString().substring(0,vaccineArr[i]['data'][index]["total_vaccinations"].toString().length-6)));
-
-
-    }
-    
-
-        }
-    }
-    
-
-}
-countryData[6] = 'British';
-countryData[7] = 'America';
     
     console.log("changdu"+countryData.length);
 option2 = {
@@ -316,7 +310,7 @@ option2 = {
                 type: 'shadow'
             },
             axisLabel: {
-              interval:0,  //设置这里
+              interval:0,  
               margin: 10
             }
         }

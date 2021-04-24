@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!-- 二级 -->
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -15,6 +21,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- <link rel="stylesheet" href="/main.css" /> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -25,19 +32,92 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>COVID-19 Dashboard</title>
+    <nav class="navbar navbar-static-top navbar-default" role="navigation">
+      <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+              <span class="glyphicon glyphicon-dashboard"></span> COVID-19</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          <li><a href="/" id="3d">3D Globe</a></li>
+          <li><a href="./confirmed.html" id="confirmed">Confirmed</a></li>
+          <li><a href="./Death.html" id="death">Deaths</a></li>
+          <li><a href="./Recovered.html" id="recovered_map">Recovered</a></li>
+          <li><a href="./vaccine.html" id="vaccine">Vaccination</a></li>
+          <li class="active"><a href="/" id="cad_vaccination">Canda Vaccination</a></li>
+          <li><a href="/detail" id="detail">Details</a></li>
+        </ul>
+      </div>
+    </nav>
+    <style>
+      body{
+          max-width:100%;
+      }
+      .navbar-default{
+          background-color: #CD853F;
+          border-color: #CD853F;
+          max-width:100%;
+      }
+      .navbar-default .navbar-brand,
+      .navbar-default .navbar-text,
+      .navbar-default .navbar-nav > li > a {
+          color: #FFFFFF;
+          border-radius: 25px;
+      }
+      .navbar-default .navbar-brand:hover,
+      .navbar-default .navbar-brand:focus,
+      .navbar-default .navbar-nav > li > a:hover,
+      .navbar-default .navbar-nav > li > a:focus {
+          color: #FFFFFF;
+          background-color: #CC9966 
+
+      }
+      .navbar-default .navbar-nav > .active > a,
+      .navbar-default .navbar-nav > .active > a:hover,
+      .navbar-default .navbar-nav > .active > a:focus {
+          color: #ecf0f1;
+          background-color: #A0522D;
+      } 
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- <div id="globeViz"></div>
+    <div class="top-info-container">
+      <div class="title-desc">
+        Loading countries affected by the virus...
+      </div>
+    </div>
+    <div class="bottom-info-container">
+      <div style="display: flex; justify-content: center;">
+        <div class="timeline-container">
+          <button disabled style="margin-right: 10px;" class="play-button">
+            Play
+          </button>
+          <input
+            class="slider"
+            disabled
+            type="range"
+            min="0"
+            max="1"
+            step="1"
+          />
+          <span
+            style="font-size: 14px; color: #ccd6f6;"
+            class="slider-date"
+          ></span>
+        </div>
+      </div>
+      <div style="font-size: 14px; color: #ccd6f6; margin-top: 30px;">
+        Total Counts <span class="updated"></span>
+      </div>
+      <div style="color: #e6f1ff; padding: 0 5px;">
+        INFECTED: <span id="infected">0</span> • DEATHS:
+        <span id="deaths">0</span> • RECOVERED: <span id="recovered">0</span>
+      </div>
+      </div>
+    </div>
+    <script type="module" src="/_dist_/globe.js"></script> -->
   </body>
 </html>
