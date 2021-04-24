@@ -1,9 +1,18 @@
+/**
+ * 1. The main component which sets up the navigational components for both the frontend table and
+ * the chart.
+ * 
+ * 2. Set the URLs for the web app.
+ * 
+ * 3. Configure the layout style for the components.
+ */
+
 import React from 'react';
 import './App.css';
 import TableComponent from './table/table.js'
 import ChartComponent from './chart/chart.js'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Row, Col, Layout, Icon, Menu } from 'antd';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Row, Col, Layout } from 'antd';
 
 import Globe from 'globe.gl';
 import { request, getCoordinates, numberWithCommas, formatDate } from './utils';
@@ -17,7 +26,7 @@ import {
 import * as d3 from 'd3';
 
 
-const { Header, Footer, Content } = Layout;
+const { Footer, Content } = Layout;
 
 // Globe container
 // const globeContainer = document.getElementById('globeViz');

@@ -1,3 +1,9 @@
+/**
+ * 1. Import the components that need to be rendered.
+ * 
+ * 2. Point the root div element as the destination of render.
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

@@ -1,3 +1,13 @@
+/**
+ * 1. Component of the frontend chart to compare the vaccination coverages 
+ * of Canada for any 2 selected provinces.
+ * 
+ * 2. Sending and fetching API requests to and from Django backend 
+ * server are included in this component to process data for visualization.
+ * 
+ * 3. Data is applied and shown on the figure once the component is mounted and callback 
+ * function is returned.
+ */
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Select, Typography, Button } from 'antd';

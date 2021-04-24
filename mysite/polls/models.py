@@ -1,3 +1,9 @@
+'''
+Set up Django model for the database.
+It contains the essential fields and behaviors of the data. 
+Generally, each model maps to a single database table.
+'''
+
 from django.db import models
 
 class Ranking(models.Model):

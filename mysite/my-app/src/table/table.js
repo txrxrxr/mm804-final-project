@@ -1,3 +1,14 @@
+/**
+ * 1. Component of the frontend table to visualize the details of table
+ * that is supplied to the chart component.
+ * 
+ * 2. Sending and fetching API requests to and from Django backend 
+ * server are included in this component to process data for visualization.
+ * 
+ * 3. Data is applied and shown on the figure once the component is mounted and callback 
+ * function is returned.
+ */
+
 import React from 'react';
 import 'antd/dist/antd.css';
 import './table.css';
@@ -55,14 +66,12 @@ class TableComponent extends React.Component {
       {
         title: 'Year',
         dataIndex: 'year',
-        // key: 'year',
         sorter: (a, b) => a.year > b.year,
         sortDirections: ['descend', 'ascend'],
       },
       {
         title: 'Location',
         dataIndex: 'location',
-        // key: 'location',
         align: 'center',
         filters: this.state.locationFilters,
         onFilter: (value, record) => record.location.includes(value)
@@ -77,7 +86,6 @@ class TableComponent extends React.Component {
       {
         title: 'total_number',
         dataIndex: 'total_number',
-        // key: 'total_number',
         sorter: (a, b) => parseInt(a.total_number) - parseInt(b.total_number) ,
         sortDirections: ['descend', 'ascend'],
       }

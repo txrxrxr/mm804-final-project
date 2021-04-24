@@ -1,3 +1,8 @@
+'''
+Define view functions to take the web request and return a web response 
+to the frontend visualization components.
+'''
+
 from django.http import HttpResponse
 from .models import Ranking
 import json
