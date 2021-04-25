@@ -96,32 +96,37 @@ $ npm start
 ![image](https://user-images.githubusercontent.com/31713264/115631196-94e01280-a2c2-11eb-80d9-528448ab9c84.png)
 
 ```
-- Visualize the global confirmed cases and compare the infection rates.
+- Visualize the global confirmed cases and compare the infection rates with available date picker.
 ```
-![image](https://user-images.githubusercontent.com/31713264/115631272-bd680c80-a2c2-11eb-8aa8-1911ad22445c.png)
+![image](https://user-images.githubusercontent.com/31713264/115984665-8a917300-a565-11eb-8c93-8d223f5dc1fe.png)
+
+![image](https://user-images.githubusercontent.com/31713264/115984827-3fc42b00-a566-11eb-8ff0-ce030c5c0600.png)
+
+![image](https://user-images.githubusercontent.com/31713264/115984623-5e75f200-a565-11eb-9f84-59ed7ea0b8e7.png)
+
 
 ```
-- Visualize the global deaths during the COVID-19 pandemic.
+- Visualize the global deaths during the COVID-19 pandemic with available date picker.
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115631345-dec8f880-a2c2-11eb-8bec-64954d7be3b7.png)
 
 ```
-- Visualize the global recovered cases during the COVID-19 pandemic.
+- Visualize the global recovered cases during the COVID-19 pandemic with available date picker.
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115631384-f30cf580-a2c2-11eb-8dc7-8002213c0033.png)
 
 ```
-- Visualize the global vaccination status and vaccination rate during the COVID-19 pandemic.
+- Visualize the global vaccination status and vaccination rate during the COVID-19 pandemic with available date picker.
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115631435-0b7d1000-a2c3-11eb-9b51-cf4bd8173929.png)
 
 ```
-- Check the vaccine coverage from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month.
+- Check the vaccine coverage in Canada from the perspective of population taking 1 does and population taking 2 doses for one province in a specific month.
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115632401-dd003480-a2c4-11eb-85d4-44f417becfdd.png)
 
 ```
-- Compare the vaccine coverages between two provinces in a specific month.
+- Compare the vaccine coverages in Canada between two provinces in a specific month.
 ```
 ![image](https://user-images.githubusercontent.com/31713264/115632481-0e790000-a2c5-11eb-9ce3-97a8e8db3a05.png)
 
