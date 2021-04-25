@@ -98,11 +98,11 @@ $ npm start
 ```
 - Visualize the global confirmed cases and compare the infection rates with available date picker.
 ```
-![image](https://user-images.githubusercontent.com/31713264/115984665-8a917300-a565-11eb-8c93-8d223f5dc1fe.png)
+![image](https://user-images.githubusercontent.com/31713264/115985311-8f0b5b00-a568-11eb-8c3f-d0902f18b8ea.png)
 
-![image](https://user-images.githubusercontent.com/31713264/115984827-3fc42b00-a566-11eb-8ff0-ce030c5c0600.png)
+![image](https://user-images.githubusercontent.com/31713264/115985317-96326900-a568-11eb-91e1-50a2bc506be5.png)
 
-![image](https://user-images.githubusercontent.com/31713264/115984623-5e75f200-a565-11eb-9f84-59ed7ea0b8e7.png)
+![image](https://user-images.githubusercontent.com/31713264/115985320-9af71d00-a568-11eb-8959-6fc7fbced1a0.png)
 
 
 ```
