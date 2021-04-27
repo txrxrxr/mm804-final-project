@@ -15,7 +15,9 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li><a href="/" id="3d">3D Globe</a></li>
+                    <li>
+                        <a href="./" id="">3D Globe</a>
+                    </li>
                     <li><a href="./confirmed.html" id="index">Confirmed</a></li>
                     <li class="active"><a href="#" id="death">Death</a></li>
                     <li><a href="./Recovered.html" id="recovered">Recovered</a></li>
@@ -84,19 +86,6 @@
         <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdn.bootcss.com/smalot-bootstrap-datetimepicker/2.4.4/js/bootstrap-datetimepicker.min.js"></script>
         <script src="https://cdn.bootcss.com/smalot-bootstrap-datetimepicker/2.4.4/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-        <!-- Uncomment this line if you want to dataTool extension
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
-        -->
-        <!-- Uncomment this line if you want to use gl extension
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
-        -->
-        <!-- Uncomment this line if you want to echarts-stat extension
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
-        -->
-        <!-- Uncomment this line if you want to use map
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
-        -->
 
         <style type="text/css">
             .navbar { margin-bottom: 0}
@@ -106,21 +95,21 @@
 
 
         <script type="text/javascript">
-
+            //Time picker
             $(function() {
                         $(".form-control").datetimepicker({
-                            format : 'yyyy-mm-dd', // 展现格式
+                            format : 'yyyy-mm-dd', // date format
 
-                            startDate : "2020-01-21",// 开始时间
-                            endDate : "2021-03-31", // 结束时间
-                            autoclose : true, // 选择日期后关闭
-                            // 选择器打开之后首先显示的视图
-                            // 0表示分钟(默认),1表示小时,2表示天,3表示月,4表示年
+                            startDate : "2020-01-21",// start date
+                            endDate : "2021-03-31", // end date
+                            autoclose : true, // close after date selected
+                            // The first view to display after picker openned
+                            // 0 means minute(by default),1 means hour,2 means date,3 means month,4 means year
                             startView : 3,
-                            // 选择器所能够提供的最精确的时间选择视图
-                            // 0表示分钟(默认),1表示小时,2表示天,3表示月,4表示年
+                            // The minimal time unit picker can provide
+                            // 0 means minute(by default),1 means hour,2 means date,3 means month,4 means year
                             minView : 2,
-                            language : 'en-US', //显示语言为中文
+                            language : 'en-US', //laguage
                         });
                         
                     });
@@ -133,6 +122,7 @@ var DateStr = '4/2/21';
     confirmedArr=[];
     deathArr=[];
     recoveredArr=[];
+    //Get data from localhost
     $.ajax({
                 type: "GET",
                 async: false,
@@ -140,10 +130,8 @@ var DateStr = '4/2/21';
                 dataType: "json",
                 success: function(res) {
                     confirmedArr = res;
-        //console.log(confirmedArr);
                 }
             });
-    //console.log(confirmedArr);
         $.ajax({
                 type: "GET",
                 async: false,
@@ -163,7 +151,7 @@ var DateStr = '4/2/21';
                 }
             });
 
-
+            // initialize the regionData for rendering the world maps
             var dom = document.getElementById("container");
             var myChart = echarts.init(dom);
             var regionData=[];
@@ -202,8 +190,6 @@ var DateStr = '4/2/21';
                             }
                         }
                         return '';
-                        // return info;
-                        // return params.data['name']+ " <br> " +"Value: "+ params.data['value'];
                     }
                 },
                 series: [{
@@ -281,7 +267,7 @@ searchBtn.onclick = function(){
                     inRange: {
                         color: ['#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
                             },
-                    text: ['High', 'Low'],           // 文本，默认为数值文本
+                    text: ['High', 'Low'], 
                     calculable: true
                 },
                     series: [{
